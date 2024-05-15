@@ -21,5 +21,7 @@ try:
                 logging.info(f"Arquivo {entry} movido com sucesso para {dest_dir}")
             except shutil.Error as e:
                 logging.warning(f"Não foi possível mover {entry} para {dest_dir}: {e}")
+            except Exception as e:  # Incluída exceção para tentar tratar a popup de erro do Ubuntu 24.04
+                logging.error(f"Erro inesperado ao mover {entry}: {e}")
 except Exception as e:
     logging.error(f"Erro ao listar ou mover arquivos: {e}")
